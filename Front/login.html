@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login/Register</title>
+    </head>
+    <body>
+        <a href="index.html">Back to Home</a>
+        <h1>Login</h1>
+        <form action="login" id="loginForm" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <button type="submit" class="primary-btn">Login</button>
+        
+        </form>
+
+        <script>
+            const loginForm = document.getElementById("loginForm");
+            loginForm.onsubmit = function(event) {
+                event.preventDefault();
+                const username = document.getElementById("username").value;
+                localStorage.setItem("username", username);
+                window.location.href = "index.html";
+            };
+        </script>
+
+        <span class ="new-user" id="openRegister">New User? You can register here!</span>
+
+        <h1>Register</h1>
+        <form action="register" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="new-username">Username:</label>
+            <input type="text" id="new-username" name="username">
+            <br>
+            <label for="new-password">Password:</label>
+            <input type="password" id="new-password" name="password">
+            <br>
+            <button type="submit">Register</button>
+        
+    </body>
+</html>

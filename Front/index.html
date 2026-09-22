@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jet2Holiday</title>
+        <title>Bookstore</title>
         <link rel="icon" type="image/png" href="image/93TilInfinity.png">
         <link rel="stylesheet" href="index.css">
        
@@ -16,14 +16,22 @@
             </ul>
             <ul class="right">
                 <li><a href="#">help</a></li>
-                <li><a href="#">register/login</a></li>
+                <li><a href="login.html">register/login</a></li>
             </ul>
         </nav>
         <h1>Library App</h1>
-        <form id="sub" class="search" action="bookSearch" method="get">
+        <form class="search-container" action="bookSearch" method="get">
+            <input
+                type="search" id="q1" name="query" placeholder="Search for a book..." aria-label ="Search through site content" required>
+
+                <button type="submit" id="btn1"><img src="image/mag.png" width="10" height="10"></button>
+        </form>
+        
+        <!-- 
+            id="sub" class="search" action="bookSearch" method="get">
             <input id="q1" name="query">
             <button id="btn1"><img src="image/mag.png" width="20" height="20"></button>
-        
+        -->
         </form>
         <div id="mainDiv">
             <div id="errorMsg" class="info">
