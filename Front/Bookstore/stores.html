@@ -2,12 +2,25 @@
 <html lang="eng">
     <head>
         <title>Stores</title>
+        <nav class="navbar">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="articles&events.html">Articles & Events</a></li>
+                <li><a href="stores.html">Stores</a></li>
+            </ul>
+        </nav>
     </head>
 
     <body>
         <h1>Store Locations</h1>
             <p>Search by zip code to find your nearest location!</p>
-            
+            <search>
+                <form action="stores.html" method="get">
+                    <input type="text" name="zip" placeholder="Enter Zip Code here">
+                    <input type="submit" value="Search">
+                </form>
+            </search>
     </body>
 
 </html>
