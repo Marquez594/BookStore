@@ -1,5 +1,5 @@
 import express from "express";
-import { pool } from "../server.js";
+import { pool } from "../../server.js";
 
 const signUpRouter = express.Router();
 
@@ -22,3 +22,6 @@ signUpRouter.post("/signUp", async (req, res) => {
     res.status(500).json({ error: "Server failed to run code" });
   }
 });
+
+
+export default signUpRouter
