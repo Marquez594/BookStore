@@ -15,7 +15,7 @@ getBookById.get("/getBookById", async (req, res) => {
     if(!data){
         return res.status(400).json({error: "Book was not found"})
     }
-    res.status(200).json({data})
+    res.status(200).json(data.rows)
   } catch (error) {
     res.status(500).json({ error: "Server failed to send data" });
   }

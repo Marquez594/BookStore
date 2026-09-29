@@ -9,7 +9,7 @@ getAllBooks.get("/getAllBooks", async(req,res)=>{
         if(!result){
             return res.status(400).json({error: "Could not fetch all books"})
         }
-        res.status(200).json({result})
+        res.status(200).json(result.rows)
     }catch{
         res.status(500).json({error: "Could not reach server"})
     }
