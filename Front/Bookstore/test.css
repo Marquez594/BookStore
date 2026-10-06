@@ -1,0 +1,35 @@
+div.scroll-container{
+    height: 200px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    flex-direction: row;
+    gap: 5px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+div.scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+div.scroll-container::-webkit-file-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+div.scroll-container a {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #4a4539;
+}
+
+div.scroll-container img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+}
