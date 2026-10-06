@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="store.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <a class="brand brand-home-link" href="index.html" aria-label="Store Locator home">
+        <div class="brand-icon">
+          <i class="fa-solid fa-book-open-reader" id="brandLogoFallback" aria-hidden="true"></i>
+          <img
+            class="brand-logo"
+            src="images/store-logo.png"
+            alt=""
+            data-image-fallback
+            data-fallback-target="brandLogoFallback"
+            hidden
+          />
+        </div>
+        <div>
+          <h1> Bookstore Locator</h1>
+          <p>Find a bookstore near you in New Jersey</p>
+        </div>
+      </a>
+      <div class="account-menu hidden" id="signedInUser" data-name="Madeline">
+        <button class="signed-in-user" id="accountMenuButton" type="button" aria-haspopup="true" aria-expanded="false">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <span id="signedInName"></span>
+        </button>
+        <div class="account-dropdown">
+          <a href="account.html">My account</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    <figure class="state-image-placeholder">
+      <img
+        src="images/new-jersey.png"
+        alt="Map of New Jersey"
+        data-image-fallback
+        hidden
+      />
+      <figcaption>New Jersey</figcaption>
+    </figure>
+
+    <!-- Controls Section -->
+    <section class="controls-panel">
+      <!-- Search Bar -->
+      <div class="search-box-wrapper">
+        <div class="search-input-group">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search by NJ town or ZIP..." 
+            autocomplete="off"
+          />
+          <button id="clearSearchBtn" class="clear-btn hidden" title="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Secondary Filters -->
+      <div class="filter-row">
+        <!-- Store Type Switcher -->
+        <div class="store-type-segmented" id="storeTypeSwitcher">
+          <button class="type-btn active" data-type="all">All Stores (<span id="countAll">18</span>)</button>
+        </div>
+
+        <!-- Region Filter Pills -->
+        <div class="region-pills" id="regionPills">
+          <button class="pill active" data-region="all">All NJ Regions</button>
+          <button class="pill" data-region="north">North Jersey</button>
+          <button class="pill" data-region="central">Central Jersey</button>
+          <button class="pill" data-region="south">South Jersey &amp; Shore</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Status Bar -->
+    <div class="results-header">
+      <div>
+        <span class="results-count" id="resultsCount">Showing 18 bookstores</span>
+        <span class="active-query-label" id="activeQueryLabel"></span>
+      </div>
+      <button id="resetAllBtn" class="reset-link hidden">
+        <i class="fa-solid fa-rotate-left"></i> Reset all filters
+      </button>
+    </div>
+
+    <!-- Bookstore Cards Grid -->
+    <div class="stores-grid" id="storesGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state hidden" id="emptyState">
+      <div class="empty-icon"><i class="fa-solid fa-compass"></i></div>
+      <h3>No Bookstores Found</h3>
+      <p id="emptyStateMsg">We couldn't find any bookshops matching that town or ZIP code.</p>
+      <button class="primary-btn" id="emptyResetBtn">View All 18 NJ Locations</button>
+    </div>
+  </main>
+
+  <script src="store.js"></script>
+</body>
+</html>
