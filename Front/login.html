@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3e9d9">
+    <title>Sign in | Bookshop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="login-page">
+        <section class="welcome-panel" aria-label="Welcome">
+            <div class="brand">
+                <div class="logo-slot">
+                    <img src="store-logo.png" alt="Store Logo">
+                    <p class="brand-name">Bookstore</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-panel" aria-labelledby="login-title">
+            <div class="login-container">
+                <p class="eyebrow">Welcome back</p>
+                <h2 id="login-title">Sign in to your account</h2>
+
+                <form action="/login" method="POST">
+                    <div class="form-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" autocomplete="username" placeholder="Enter your username" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+                    </div>
+                    <a href = "index.html">
+                        <button type="submit">Sign in</button>
+                    </a>
+                </form>
+
+                <p class="register-prompt">New to the bookstore? <a href="register.html">Create an account</a></p>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>

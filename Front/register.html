@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3e9d9">
+    <title>Register | Bookshop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="login-page">
+        <section class="welcome-panel" aria-label="Welcome">
+            <div class="brand">
+                <div class="logo-slot">
+                    <img src="store-logo.png" alt="Store Logo">
+                    <p class="brand-name">Bookstore</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-panel" aria-labelledby="register-title">
+            <div class="login-container">
+                <p class="eyebrow">Join us</p>
+                <h2 id="register-title">Create your account</h2>
+
+                <form action="/register" method="POST">
+                    <div class="form-field">
+                        <label for="name">First name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="John" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="surname">Last name</label>
+                        <input type="text" id="surname" name="surname" autocomplete="family-name" placeholder="Doe" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" autocomplete="username" placeholder="Enter a username" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Create a password" required>
+                    </div>
+                    <a href = "index.html">
+                        <button type="submit">Create account</button>
+                    </a>
+                </form>
+
+                <p class="register-prompt">Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
