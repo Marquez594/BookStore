@@ -1,4 +1,5 @@
 import express from "express";
+import bcrypt from "bcrypt"
 import { pool } from "../../server.js";
 
 const signUpRouter = express.Router();
@@ -11,11 +12,12 @@ signUpRouter.post("/signUp", async (req, res) => {
     return res.status(400).json({ error: "Missing parameters to create user" });
   }
   try {
+    const hashedPassword = await bcrypt.hash(password, 10)
     const result = await pool.query(
       `
             Insert into users (username, email, password, shipping_address) values ($1,$2,$3,$4) returning *
         `,
-      [username, email, password, shippingAddress],
+      [username, email, hashedPassword, shippingAddress],
     );
     res.status(200).json(result.rows[0]);
   } catch (error) {
@@ -23,5 +25,4 @@ signUpRouter.post("/signUp", async (req, res) => {
   }
 });
 
-
-export default signUpRouter
+export default signUpRouter;

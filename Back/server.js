@@ -2,15 +2,16 @@ import getAllUserRouter from "./routes/users/getAllUsers.js";
 import express from "express";
 import { Pool } from "pg";
 import signUpRouter from "./routes/users/signUp.js";
-import cors from "cors"
+import cors from "cors";
 import getAllBooks from "./routes/books/getAllBooks.js";
 import getBookById from "./routes/books/getBookById.js";
+import loginRouter from "./routes/users/logIn.js";
 
 const app = express();
 
 app.use(express.json());
-
-app.use(cors())
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 export const pool = new Pool({
   connectionString:
@@ -22,11 +23,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", getAllUserRouter);
-app.use("/users", signUpRouter)
+app.use("/users", signUpRouter);
+app.use("/users", loginRouter)
 
-app.use("/books", getAllBooks)
-app.use("/books",getBookById)
-
+app.use("/books", getAllBooks);
+app.use("/books", getBookById);
 
 app.listen(4000, () => {
   console.log("Server running on http://localhost:4000");
