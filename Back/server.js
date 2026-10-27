@@ -6,6 +6,8 @@ import cors from "cors";
 import getAllBooks from "./routes/books/getAllBooks.js";
 import getBookById from "./routes/books/getBookById.js";
 import loginRouter from "./routes/users/logIn.js";
+import getAllStoresRouter from "./routes/stores/getAllStores.js";
+import createReviewRouter from "./routes/reviews/createReview.js";
 
 const app = express();
 
@@ -24,10 +26,13 @@ app.get("/", (req, res) => {
 
 app.use("/users", getAllUserRouter);
 app.use("/users", signUpRouter);
-app.use("/users", loginRouter)
+app.use("/users", loginRouter);
 
 app.use("/books", getAllBooks);
 app.use("/books", getBookById);
+
+app.use("/stores", getAllStoresRouter);
+app.use("/reviews", createReviewRouter);
 
 app.listen(4000, () => {
   console.log("Server running on http://localhost:4000");
