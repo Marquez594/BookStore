@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | BookStore</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cart.css">
+
+    <script src="bookstore-cart.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div id="promo">
+            Free shipping on orders over $50
+        </div>
+
+        <div class="main-header">
+            <a href="/" class="logo">
+                BookStore<span>.</span>
+            </a>
+
+            <form id="search" action="/">
+                <input
+                    type="search"
+                    name="query"
+                    placeholder="Discover your next read"
+                    aria-label="Search books"
+                >
+
+                <button type="submit" aria-label="Search">
+                    <img src="image/mag.png" alt="">
+                </button>
+            </form>
+
+            <div class="header-actions">
+                <a href="/cart.html" class="cart-link">
+                    <img id="cart" src="image/cart.jpg" alt="">
+                    <span>
+                        Cart (<span id="cartCount">0</span>)
+                    </span>
+                </a>
+
+                <a href="#" class="signin-link">
+                    Sign In
+                </a>
+            </div>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="/#bestSeller">Best Sellers</a></li>
+                <li><a href="/#bestSeller">Fiction</a></li>
+                <li><a href="/#bestSeller">Popular Books</a></li>
+                <li><a href="/">Discover</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+
+        <div class="cart-heading">
+            <p class="eyebrow">YOUR BOOK COLLECTION</p>
+            <h1>Shopping Cart</h1>
+            <p>Review your books before continuing.</p>
+        </div>
+
+        <div class="cart-layout">
+
+            <section class="cart-items-section">
+                <div class="cart-section-heading">
+                    <h2>Your Items</h2>
+                    <span id="itemCount">0 items</span>
+                </div>
+
+                <div id="cartItems">
+                    <!-- JavaScript creates the cart items -->
+                </div>
+
+                <a href="/#bestSeller" class="continue-shopping">
+                    &#8592; Continue Shopping
+                </a>
+            </section>
+
+            <aside class="order-summary">
+                <h2>Order Summary</h2>
+
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Shipping</span>
+                    <span id="shipping">$0.00</span>
+                </div>
+
+                <p class="shipping-message">
+                    Free shipping on orders over $50.
+                </p>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <strong id="total">$0.00</strong>
+                </div>
+
+                <button id="checkoutBtn" type="button">
+                    Proceed to Checkout
+                </button>
+
+                <p class="checkout-note">
+                    Demo shopping cart — checkout is not connected
+                    to a payment provider.
+                </p>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <a href="/" class="logo">BookStore<span>.</span></a>
+        <p>Discover stories. Find inspiration. Keep reading.</p>
+        <small>&copy; 2026 BookStore. Class project.</small>
+    </footer>
+
+</body>
+</html>
