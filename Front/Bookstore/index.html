@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore | Discover Your Next Read</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="bookstore-cart.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="promo">
+            Free shipping on orders over $50
+        </div>
+
+        <div class="main-header">
+            <a class="logo" href="/">BookStore<span>.</span></a>
+
+            <form id="search">
+                <input type="search" name="query"
+                       placeholder="Search by Title or Author"
+                       aria-label="Search books">
+                <button type="submit" aria-label="Search">
+                    <img src="image/mag.png" alt="">
+                </button>
+            </form>
+
+            <div class="header-actions">
+                <a class="cart-link" href="/cart.html">
+                    <img id="cart" src="image/cart.jpg" alt="">
+                    <span>Cart (<span id="cartCount">0</span>)</span>
+                </a>
+                <a href="#" class="signin-link">Sign In</a>
+            </div>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="#bestSeller">Best Sellers</a></li>
+                <li><a href="#bestSeller">Fiction</a></li>
+                <li><a href="#bestSeller">Popular Books</a></li>
+                <li><a href="#bestSeller">Discover</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div id="carousel">
+                <button class="btns" id="left" aria-label="Previous banner">
+                    &#10094;
+                </button>
+
+                <div id="slide">
+                    <img src="image/elegantLib.jpg" alt="Explore our bookstore">
+                    <img src="image/banner2.jpg" alt="Discover great books">
+                    <img src="image/banner3.jpg" alt="Find your next read">
+                </div>
+
+                <button class="btns" id="right" aria-label="Next banner">
+                    &#10095;
+                </button>
+            </div>
+        </section>
+
+   
+
+        <section id="bestSeller" class="books-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">WHAT EVERYONE IS READING</p>
+                    <h2>Best Sellers</h2>
+                </div>
+                <span class="section-caption">New York Times Hardcover Fiction</span>
+            </div>
+
+            <p id="bookStatus" role="status">Loading best sellers...</p>
+
+            <div id="bookCarousel">
+                <button class="btns book-arrow" id="leftCarousel"
+                        aria-label="Previous books">&#10094;</button>
+
+                <div id="bookWindow">
+                    <div id="bookSlide"></div>
+                </div>
+
+                <button class="btns book-arrow" id="rightCarousel"
+                        aria-label="Next books">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="bottom-banner">
+            <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+            <h2>A good book is always a good idea.</h2>
+            <a href="#bestSeller">Explore Books</a>
+        </section>
+    </main>
+
+    <footer>
+        <a class="logo" href="/">BookStore<span>.</span></a>
+        <p>Discover stories. Find inspiration. Keep reading.</p>
+        <small>&copy; 2026 BookStore. Class project.</small>
+    </footer>
+</body>
+</html>
