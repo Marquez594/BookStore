@@ -247,3 +247,34 @@ body {
     font-style: italic;
     text-align: center;
 }
+
+.navbar {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #894404 0%, #845411 100%);
+    border-bottom: 3px solid var(--secondary);
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar a {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a:focus-visible {
+    color: #ffdfa9;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
