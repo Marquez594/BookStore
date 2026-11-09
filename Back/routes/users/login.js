@@ -1,5 +1,5 @@
 import express from "express";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 import { pool } from "../../server.js";
 
 const loginRouter = express.Router();
@@ -21,14 +21,19 @@ loginRouter.post("/login", async (req, res) => {
         .status(400)
         .json({ error: "User was not found/does not exist" });
     }
-    const user = result.rows[0]
-    const correctPassword = await bcrypt.compare(
-        password,
-        user.password
-    )
-    if(!correctPassword){
-        return res.status(400).json({error: "Password is not correct"})
+    const user = result.rows[0];
+    const correctPassword = await bcrypt.compare(password, user.password);
+    if (!correctPassword) {
+      return res.status(400).json({ error: "Password is not correct" });
     }
+
+    res.cookie("userId", user.id, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: "lax",
+      secure: "production",
+    });
+
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);

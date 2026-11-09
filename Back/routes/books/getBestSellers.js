@@ -1,9 +1,10 @@
 import express from "express";
 const getBestSellers=express.Router();
 getBestSellers.get("/getBestSellers",async(req,res)=>{
-    const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NYT_API_KEY}`;
+    const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=oFA1AIHOgPYtboxXaH2CrmfrDrzE8l3zhZ76QJOCYzyGjTwU`;
     const response= await fetch(url);
     const data = await response.json();
+    console.log(data)
     const books = data.results.books.map((book) => {
         return{
                title:book.title,
