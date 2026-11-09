@@ -4,7 +4,8 @@ import { pool } from "../../server.js";
 const createReviewRouter = express.Router();
 
 createReviewRouter.post("/createReview", async (req, res) => {
-  const { user_id, book_id, score, description } = req.body;
+  const user_id = req.cookies.userId;
+  const {  book_id, score, description } = req.body;
   if (!user_id || !book_id || !score) {
     return res.status(400).json({ error: "Missing parameters to add review" });
   }
