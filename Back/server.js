@@ -13,6 +13,11 @@ import getBestSellers from "./routes/books/getBestSellers.js";
 import path from "path";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
+import logOut from "./routes/users/logout.js";
+import checkLoginRouter from "./routes/users/checkLogin.js";
+import fetchReviews from "./routes/reviews/fetchReviews.js";
+import makeTransaction from "./routes/cart/makeTransaction.js";
+import fetchTransaction from "./routes/cart/fetchTransactions.js";
 
 const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
@@ -37,6 +42,8 @@ app.use("/users", getAllUserRouter);
 app.use("/users", signUpRouter);
 app.use("/users", loginRouter);
 app.use("/users", signUpRouter);
+app.use("/users", logOut)
+app.use("/users", checkLoginRouter)
 
 app.use("/books", getAllBooks);
 app.use("/books", getBookById);
@@ -46,7 +53,15 @@ app.use(cors());
 app.use(express.static(path.join(dirName, "..", "Front", "Bookstore")));
 
 app.use("/stores", getAllStoresRouter);
+
 app.use("/reviews", createReviewRouter);
+app.use("/reviews", fetchReviews)
+
+app.use("/cart", makeTransaction)
+app.use("/cart", fetchTransaction)
+
+
+
 
 app.listen(4000, () => {
   console.log("Server running on http://localhost:4000");
