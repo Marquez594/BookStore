@@ -1,0 +1,166 @@
+:root {
+    --bg: #f7f6f2;
+    --banner: #efd8b9;
+    --ink: #1c1a17;
+    --muted: #6b655c;
+    --line: #d9d4c8;
+    --accent: #7a2e2e;
+    --avatar: #a0a275;
+    --gold: #b07a12;
+    --star-off: #c9c2b3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+}
+
+h1, h2, label, button, select, .stats { font-family: Arial, sans-serif; }
+
+.banner {
+    position: relative;
+    height: 180px;
+    background-color: var(--banner);
+    background-size: cover;
+    background-position: center;
+    display: block;
+}
+
+.profile_pic {
+    position: absolute;
+    left: 50%;
+    bottom: -75px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 4px solid var(--bg);
+    height: 150px;
+    width: 150px;
+    background-color: var(--avatar);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: bold 48px Arial, sans-serif;
+    color: #fff;
+}
+
+.user_info {
+    text-align: center;
+    padding: 90px 20px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.user_info h1 { margin: 0; font-size: 28px; }
+#user_handle { margin: 2px 0 12px; color: var(--muted); }
+#user_bio { margin: 0 0 16px; }
+
+.stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    color: var(--muted);
+    font-size: 14px;
+}
+.stats strong { color: var(--ink); }
+
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px 48px;
+}
+
+.books,
+.reviews {
+    border-top: 2px solid var(--ink);
+    width: 100%;
+    padding: 8px 0 24px;
+}
+
+#favorite_books,
+#user_reviews {
+    text-align: left;
+    color: var(--ink);
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+.book_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 20px;
+}
+
+.book { display: flex; flex-direction: column; gap: 8px; }
+
+.cover {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    padding: 12px;
+    border-radius: 2px 6px 6px 2px;
+    background-color: var(--cover, #5b5648);
+    background-size: cover;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1.2;
+    box-shadow: inset 6px 0 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+img.cover { object-fit: cover; padding: 0; }
+
+.book:hover .cover {
+    transform: translateY(-6px);
+    box-shadow: inset 6px 0 0 rgba(0, 0, 0, 0.2), 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.author { font-size: 13px; color: var(--muted); margin: 0; }
+
+.book_list:not(:has(li))::after,
+.review_list:not(:has(li))::after {
+    color: var(--muted);
+}
+.book_list:not(:has(li))::after { content: "No favorite books yet."; }
+.review_list:not(:has(li))::after { content: "No reviews yet. Post your first one above."; }
+
+
+
+.review_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.review {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.review:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.review h3 { margin: 0 0 2px; font-size: 17px; }
+.review p { margin: 0; }
+.review .stars { margin-bottom: 6px; }
+.review .date { margin-top: 8px; font-size: 13px; color: var(--muted); }
