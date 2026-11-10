@@ -9,3 +9,6 @@ logOut.post("/logout", (req, res) => {
     message: "Logged Out Successfully",
   });
 });
+
+
+export default logOut

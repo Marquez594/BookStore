@@ -11,3 +11,5 @@ checkLoginRouter.get("/checkLogin", (req, res) => {
     loggedIn: true,
   });
 });
+
+export default checkLoginRouter
