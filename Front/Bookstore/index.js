@@ -6,34 +6,61 @@ const rBt = document.getElementById("right");
 const lBt = document.getElementById("left");
 const slide = document.getElementById("slide");
 
+const signInLink = document.getElementById("signIn/name");
+
+async function getProfile() {
+  try {
+    const res = await fetch("http://localhost:4000/users/getProfile", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!res.ok) {
+      signInLink.textContent = "Sign In";
+      signInLink.href = "login.html";
+      return;
+    }
+
+    const data = await res.json();
+    console.log(data);
+
+    signInLink.textContent = data.profile.username;
+    signInLink.href = "profile.html";
+  } catch (error) {
+    console.error(error);
+    signInLink.textContent = "Sign In";
+    signInLink.href = "login.html";
+  }
+}
+
+getProfile();
+
 const bannerPics = [
-    "image/elegantLib.jpg",
-    "image/banner2.jpg",
-    "image/banner3.jpg"
+  "image/elegantLib.jpg",
+  "image/banner2.jpg",
+  "image/banner3.jpg",
 ];
 
 let currentIndex = 0;
 
 function changeBannerRight() {
-    currentIndex++;
+  currentIndex++;
 
-    if (currentIndex === bannerPics.length) {
-        currentIndex = 0;
-    }
+  if (currentIndex === bannerPics.length) {
+    currentIndex = 0;
+  }
 
-    slide.style.transform =
-        "translateX(" + -(currentIndex * 100) + "%)";
+  slide.style.transform = "translateX(" + -(currentIndex * 100) + "%)";
 }
 
 function changeBannerLeft() {
-    currentIndex--;
+  currentIndex--;
 
-    if (currentIndex < 0) {
-        currentIndex = bannerPics.length - 1;
-    }
+  if (currentIndex < 0) {
+    currentIndex = bannerPics.length - 1;
+  }
 
-    slide.style.transform =
-        "translateX(" + -(currentIndex * 100) + "%)";
+  slide.style.transform = "translateX(" + -(currentIndex * 100) + "%)";
 }
 
 rBt.addEventListener("click", changeBannerRight);
@@ -56,9 +83,9 @@ let allBooks = [];
 function getVisibleBookCount() {
     const firstCard = bookSlide.querySelector(".bookCard");
 
-    if (!firstCard) {
-        return 1;
-    }
+  if (!firstCard) {
+    return 1;
+  }
 
     const cardWidth = firstCard.getBoundingClientRect().width;
     const gap = parseFloat(getComputedStyle(bookSlide).gap) || 0;
@@ -73,63 +100,60 @@ function getVisibleBookCount() {
 }
 
 function getTotalBookPages() {
-    return Math.ceil(
-        bookSlide.children.length / getVisibleBookCount()
-    );
+  return Math.ceil(bookSlide.children.length / getVisibleBookCount());
 }
 
 function updateBookSlide() {
-    const cards = bookSlide.querySelectorAll(".bookCard");
+  const cards = bookSlide.querySelectorAll(".bookCard");
 
-    if (cards.length === 0) {
-        return;
-    }
+  if (cards.length === 0) {
+    return;
+  }
 
     const visibleCount = getVisibleBookCount();
     let firstIndex = bookSlideIndex * visibleCount;
 
-    if (firstIndex >= cards.length) {
-        bookSlideIndex = 0;
-        firstIndex = 0;
-    }
+  if (firstIndex >= cards.length) {
+    bookSlideIndex = 0;
+    firstIndex = 0;
+  }
 
     const offset =
         cards[firstIndex].offsetLeft - cards[0].offsetLeft;
 
-    bookSlide.style.transform =
-        "translateX(" + -offset + "px)";
+  bookSlide.style.transform = "translateX(" + -offset + "px)";
 }
 
 function slideBookRight() {
     const totalPages = getTotalBookPages();
 
-    if (totalPages === 0) {
-        return;
-    }
+  if (totalPages === 0) {
+    return;
+  }
 
-    bookSlideIndex++;
+  bookSlideIndex++;
 
-    if (bookSlideIndex >= totalPages) {
-        bookSlideIndex = 0;
-    }
+  if (bookSlideIndex >= totalPages) {
+    bookSlideIndex = 0;
+  }
 
-    updateBookSlide();
+  updateBookSlide();
 }
 
 function slideBookLeft() {
     const totalPages = getTotalBookPages();
 
-    if (totalPages === 0) {
-        return;
-    }
+  if (totalPages === 0) {
+    return;
+  }
 
-    bookSlideIndex--;
+  bookSlideIndex--;
 
-    if (bookSlideIndex < 0) {
-        bookSlideIndex = totalPages - 1;
-    }
+  if (bookSlideIndex < 0) {
+    bookSlideIndex = totalPages - 1;
+  }
 
-    updateBookSlide();
+  updateBookSlide();
 }
 
 rCara.addEventListener("click", slideBookRight);
@@ -146,12 +170,12 @@ function displayBooks(books) {
     bookSlideIndex = 0;
     bookSlide.style.transform = "translateX(0px)";
 
-    if (books.length === 0) {
-        bookStatus.innerText = "No books found.";
-        return;
-    }
+  if (books.length === 0) {
+    bookStatus.innerText = "No books found.";
+    return;
+  }
 
-    bookStatus.innerText = "";
+  bookStatus.innerText = "";
 
     for (let i = 0; i < books.length; i++) {
         const book = books[i];
@@ -183,23 +207,23 @@ function displayBooks(books) {
         button.addEventListener("click", function () {
             addToCart(book);
 
-            button.innerText = "Added ✓";
+      button.innerText = "Added ✓";
 
-            setTimeout(function () {
-                button.innerText = "Add to Cart";
-            }, 1200);
-        });
+      setTimeout(function () {
+        button.innerText = "Add to Cart";
+      }, 1200);
+    });
 
-        card.appendChild(image);
-        card.appendChild(title);
-        card.appendChild(author);
-        card.appendChild(price);
-        card.appendChild(button);
+    card.appendChild(image);
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(price);
+    card.appendChild(button);
 
-        bookSlide.appendChild(card);
-    }
+    bookSlide.appendChild(card);
+  }
 
-    updateBookSlide();
+  updateBookSlide();
 }
 
 
@@ -374,8 +398,8 @@ books.forEach(function (book) {
 // ========================================
 
 window.addEventListener("resize", function () {
-    bookSlideIndex = 0;
-    updateBookSlide();
+  bookSlideIndex = 0;
+  updateBookSlide();
 });
 
 

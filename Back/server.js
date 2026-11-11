@@ -18,6 +18,7 @@ import checkLoginRouter from "./routes/users/checkLogin.js";
 import fetchReviews from "./routes/reviews/fetchReviews.js";
 import makeTransaction from "./routes/cart/makeTransaction.js";
 import fetchTransaction from "./routes/cart/fetchTransactions.js";
+import getProfileRouter from "./routes/users/getProfile.js";
 
 const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
@@ -44,6 +45,7 @@ app.use("/users", loginRouter);
 app.use("/users", signUpRouter);
 app.use("/users", logOut)
 app.use("/users", checkLoginRouter)
+app.use("/users", getProfileRouter)
 
 app.use("/books", getAllBooks);
 app.use("/books", getBookById);

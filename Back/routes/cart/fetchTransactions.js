@@ -5,7 +5,7 @@ const fetchTransaction = express.Router();
 
 fetchTransaction.get("/fetchTransactions", async (req, res) => {
   try {
-    const { userId } = req.cookies.userId;
+    const userId = req.cookies.userId;
     if (!userId) {
       return res
         .status(400)
@@ -35,5 +35,4 @@ fetchTransaction.get("/fetchTransactions", async (req, res) => {
   }
 });
 
-
-export default fetchTransaction
+export default fetchTransaction;
