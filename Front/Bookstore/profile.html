@@ -8,17 +8,26 @@
 </head>
 <body>
 
+    <a class="backHome" href="index.html">
+        <h1>Home</h1>
+    </a>
+    
+    <button class="signOut" id="signOut">
+        <h1>Sign Out</h1>
+    </button>
+
     <div class="banner">
-        <div class="profile_pic" role="img" aria-label="Profile picture">AM</div>
+        <div class="profile_pic" role="img" aria-label="Profile picture">
+            <h1 id="initials">AM</h1>
+        </div>
     </div>
 
     <header class="user_info">
         <h1 id="user_name">Placeholder For Name</h1>
         <p id="user_handle">@Placeholder for handle</p>
-        <p id="user_bio">Placeholder for bio</p>
         <ul class="stats">
             <li><strong>3</strong> favorite books</li>
-            <li><strong>2</strong> reviews</li>
+            <li><strong id="review_number">2</strong> reviews</li>
         </ul>
     </header>
 
@@ -58,5 +67,6 @@
             </ul>
         </section>
     </main>
+    <script src="profile.js"></script>
 </body>
 </html>
