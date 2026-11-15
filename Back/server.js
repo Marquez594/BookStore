@@ -19,6 +19,7 @@ import fetchReviews from "./routes/reviews/fetchReviews.js";
 import makeTransaction from "./routes/cart/makeTransaction.js";
 import fetchTransaction from "./routes/cart/fetchTransactions.js";
 import getProfileRouter from "./routes/users/getProfile.js";
+import searchBooks from "./routes/books/searchBooks.js";
 
 const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
@@ -50,6 +51,8 @@ app.use("/users", getProfileRouter)
 app.use("/books", getAllBooks);
 app.use("/books", getBookById);
 app.use("/books", getBestSellers);
+app.use("/books", searchBooks);
+
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(dirName, "..", "Front", "Bookstore")));
