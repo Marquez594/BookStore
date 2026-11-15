@@ -6,154 +6,187 @@ const totalElement = document.getElementById("total");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
 function displayCart() {
-    const cart = getCart();
+  const cart = getCart();
 
-    cartItems.replaceChildren();
+  cartItems.replaceChildren();
 
-    const count = cart.reduce(function (total, item) {
-        return total + item.quantity;
-    }, 0);
+  const count = cart.reduce(function (total, item) {
+    return total + item.quantity;
+  }, 0);
 
-    itemCount.innerText = count + (count === 1 ? " item" : " items");
+  itemCount.innerText = count + (count === 1 ? " item" : " items");
 
-    updateCartCount();
+  updateCartCount();
 
-    if (cart.length === 0) {
-        const empty = document.createElement("div");
-        empty.className = "empty-cart";
+  if (cart.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-cart";
 
-        const heading = document.createElement("h3");
-        heading.innerText = "Your cart is empty";
+    const heading = document.createElement("h3");
+    heading.innerText = "Your cart is empty";
 
-        const message = document.createElement("p");
-        message.innerText = "Looks like you haven't added any books yet.";
+    const message = document.createElement("p");
+    message.innerText = "Looks like you haven't added any books yet.";
 
-        const link = document.createElement("a");
-        link.href = "/#bestSeller";
-        link.innerText = "Browse Books";
+    const link = document.createElement("a");
+    link.href = "/#bestSeller";
+    link.innerText = "Browse Books";
 
-        empty.appendChild(heading);
-        empty.appendChild(message);
-        empty.appendChild(link);
+    empty.appendChild(heading);
+    empty.appendChild(message);
+    empty.appendChild(link);
 
-        cartItems.appendChild(empty);
-    }
+    cartItems.appendChild(empty);
+  }
 
-    for (let i = 0; i < cart.length; i++) {
-        const book = cart[i];
+  for (let i = 0; i < cart.length; i++) {
+    const book = cart[i];
 
-        const item = document.createElement("div");
-        item.className = "cart-item";
+    const item = document.createElement("div");
+    item.className = "cart-item";
 
-        const image = document.createElement("img");
-        image.className = "cart-item-image";
-        image.src = book.cover;
-        image.alt = book.title;
+    const image = document.createElement("img");
+    image.className = "cart-item-image";
+    image.src = book.cover;
+    image.alt = book.title;
 
-        const info = document.createElement("div");
-        info.className = "cart-item-info";
+    const info = document.createElement("div");
+    info.className = "cart-item-info";
 
-        const title = document.createElement("h3");
-        title.className = "cart-item-title";
-        title.innerText = book.title;
+    const title = document.createElement("h3");
+    title.className = "cart-item-title";
+    title.innerText = book.title;
 
-        const author = document.createElement("p");
-        author.className = "cart-item-author";
-        author.innerText = book.author;
+    const author = document.createElement("p");
+    author.className = "cart-item-author";
+    author.innerText = book.author;
 
-        const price = document.createElement("p");
-        price.className = "cart-item-price";
-        price.innerText = money(book.price * book.quantity);
+    const price = document.createElement("p");
+    price.className = "cart-item-price";
+    price.innerText = money(book.price * book.quantity);
 
-        // QUANTITY CONTROLS
+    // QUANTITY CONTROLS
 
-        const quantity = document.createElement("div");
-        quantity.className = "quantity-control";
+    const quantity = document.createElement("div");
+    quantity.className = "quantity-control";
 
-        const minusButton = document.createElement("button");
-        minusButton.type = "button";
-        minusButton.innerText = "−";
-        minusButton.setAttribute("aria-label", "Decrease quantity");
+    const minusButton = document.createElement("button");
+    minusButton.type = "button";
+    minusButton.innerText = "−";
+    minusButton.setAttribute("aria-label", "Decrease quantity");
 
-        const quantityNumber = document.createElement("span");
-        quantityNumber.innerText = book.quantity;
+    const quantityNumber = document.createElement("span");
+    quantityNumber.innerText = book.quantity;
 
-        const plusButton = document.createElement("button");
-        plusButton.type = "button";
-        plusButton.innerText = "+";
-        plusButton.setAttribute("aria-label", "Increase quantity");
+    const plusButton = document.createElement("button");
+    plusButton.type = "button";
+    plusButton.innerText = "+";
+    plusButton.setAttribute("aria-label", "Increase quantity");
 
-        minusButton.addEventListener("click", function () {
-            changeQuantity(book.id, -1);
-            displayCart();
-        });
+    minusButton.addEventListener("click", function () {
+      changeQuantity(book.id, -1);
+      displayCart();
+    });
 
-        plusButton.addEventListener("click", function () {
-            changeQuantity(book.id, 1);
-            displayCart();
-        });
+    plusButton.addEventListener("click", function () {
+      changeQuantity(book.id, 1);
+      displayCart();
+    });
 
-        quantity.appendChild(minusButton);
-        quantity.appendChild(quantityNumber);
-        quantity.appendChild(plusButton);
+    quantity.appendChild(minusButton);
+    quantity.appendChild(quantityNumber);
+    quantity.appendChild(plusButton);
 
-        // REMOVE BUTTON
+    // REMOVE BUTTON
 
-        const removeButton = document.createElement("button");
-        removeButton.type = "button";
-        removeButton.className = "remove-button";
-        removeButton.innerText = "Remove";
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "remove-button";
+    removeButton.innerText = "Remove";
 
-        removeButton.addEventListener("click", function () {
-            removeFromCart(book.id);
-            displayCart();
-        });
+    removeButton.addEventListener("click", function () {
+      removeFromCart(book.id);
+      displayCart();
+    });
 
-        // BUILD ITEM
+    // BUILD ITEM
 
-        info.appendChild(title);
-        info.appendChild(author);
-        info.appendChild(price);
-        info.appendChild(quantity);
-        info.appendChild(removeButton);
+    info.appendChild(title);
+    info.appendChild(author);
+    info.appendChild(price);
+    info.appendChild(quantity);
+    info.appendChild(removeButton);
 
-        item.appendChild(image);
-        item.appendChild(info);
+    item.appendChild(image);
+    item.appendChild(info);
 
-        cartItems.appendChild(item);
-    }
+    cartItems.appendChild(item);
+  }
 
-    updateTotals(cart);
+  updateTotals(cart);
 }
 
 function updateTotals(cart) {
-    let subtotal = cart.reduce(function (total, book) {
-        return total + (book.price * book.quantity);
-    }, 0);
+  let subtotal = cart.reduce(function (total, book) {
+    return total + book.price * book.quantity;
+  }, 0);
 
-    // Free shipping for $50 or more.
-    let shipping = 0;
+  // Free shipping for $50 or more.
+  let shipping = 0;
 
-    if (subtotal > 0 && subtotal < 50) {
-        shipping = 4.99;
-    }
+  if (subtotal > 0 && subtotal < 50) {
+    shipping = 4.99;
+  }
 
-    let total = subtotal + shipping;
+  let total = subtotal + shipping;
 
-    subtotalElement.innerText = money(subtotal);
-    shippingElement.innerText = shipping === 0 ? "FREE" : money(shipping);
-    totalElement.innerText = money(total);
+  subtotalElement.innerText = money(subtotal);
+  shippingElement.innerText = shipping === 0 ? "FREE" : money(shipping);
+  totalElement.innerText = money(total);
 
-    checkoutBtn.disabled = cart.length === 0;
+  checkoutBtn.disabled = cart.length === 0;
 }
 
 // CHECKOUT PLACEHOLDER
 
-checkoutBtn.addEventListener("click", function () {
-    alert(
-        "This is a bookstore class project. " +
-        "Real checkout and payment processing are not implemented yet."
-    );
-});
+//checkoutBtn.addEventListener("click", function () {
+//  alert(
+//    "This is a bookstore class project. " +
+//      "Real checkout and payment processing are not implemented yet.",
+//  );
+//});
+
+async function handleTransaction() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("bookstore_cart") || []);
+    const result = await fetch("http://localhost:4000/cart/makeTransaction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ cart }),
+    });
+
+    const data = await result.json();
+
+    if (!result.ok) {
+      throw new Error(data.message || "Transaction Failed");
+    }
+
+    console.log(data);
+
+    if(data.success == true){
+        alert("Transaction Completed")
+        localStorage.clear()
+        window.location.reload()
+    }
+
+  } catch (error) {
+    console.error("Transaction History : ", error);
+  }
+}
+
+checkoutBtn.addEventListener("click", handleTransaction)
 
 displayCart();
