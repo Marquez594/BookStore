@@ -26,28 +26,22 @@
         <h1 id="user_name">Placeholder For Name</h1>
         <p id="user_handle">@Placeholder for handle</p>
         <ul class="stats">
-            <li><strong>3</strong> favorite books</li>
-            <li><strong id="review_number">2</strong> reviews</li>
+            <li><strong id="transaction-number">0</strong> transactions</li>
+            <li><strong id="review_number">0</strong> reviews</li>
         </ul>
     </header>
 
     <main>
         <section class="books">
             <h2 id="favorite_books">Transaction History</h2>
-            <ul class="book_list">
-                <li class="book">
-                    <div class="cover" style="--cover: #3d5a40">Name1</div>
-                    <p class="author">Placeholder</p>
-                </li>
-                <li class="book">
-                    <div class="cover" style="--cover: #7a2e2e">Name2</div>
-                    <p class="author">Placeholder</p>
-                </li>
-                <li class="book">
-                    <div class="cover" style="--cover: #8a6a2b">Name3</div>
-                    <p class="author">Placeholder</p>
-                </li>
-            </ul>
+            <div class="books-section" id="transaction_section">
+                <div class="transaction-area">
+                    <h1 class="dateOfTransaction">Date</h1>
+                    <div class="books-bought">
+                        <div class="cover" style="--cover: #3d5a40">Name1</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="reviews">
