@@ -32,7 +32,7 @@ getProfileRouter.get("/getProfile", async (req, res) => {
 
     const transactionTableResults = await pool.query(
       `
-            Select cart from transactions_history where user_id = $1
+            Select cart, create_at from transactions_history where user_id = $1
         `,
       [userId],
     );
