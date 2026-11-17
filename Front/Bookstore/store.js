@@ -297,6 +297,27 @@ const regionPills = document.getElementById("regionPills");
 const specialtyFilter = document.getElementById("specialtyFilter");
 const quickChips = document.querySelectorAll(".chip");
 
+const username = document.getElementById("signedInName");
+
+async function getProfile() {
+  try {
+    const res = await fetch("http://localhost:4000/users/getProfile", {
+      method: "GET",
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+
+    username.textContent = data.profile.username;
+
+  } catch (error) {
+    console.error(error);
+
+  }
+}
+
+getProfile();
+
 // Initialize
 function initApp() {
   document.querySelectorAll("[data-image-fallback]").forEach(image => {
@@ -322,7 +343,7 @@ function initApp() {
   const signedInUser = document.getElementById("signedInUser");
   const signedInName = signedInUser.dataset.name.trim();
   if (signedInName) {
-    document.getElementById("signedInName").textContent = `Hi ${signedInName}`;
+    document.getElementById("signedInName").textContent = `${signedInName}`;
     signedInUser.classList.remove("hidden");
   }
 

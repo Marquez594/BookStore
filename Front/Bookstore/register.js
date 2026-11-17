@@ -26,6 +26,12 @@ registerForm.addEventListener("submit", async (event) => {
 
     const data = await res.json();
 
+    if (data.success == false) {
+      document.getElementById("errorArea").style.display = "flex" 
+      console.log(data.message)
+      document.getElementById("errorMessage").textContent = data.message;
+    }
+
     if (!res.ok) {
       console.log("error oh no", data);
       return;

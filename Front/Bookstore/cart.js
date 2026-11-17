@@ -5,6 +5,35 @@ const shippingElement = document.getElementById("shipping");
 const totalElement = document.getElementById("total");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
+const signInLink = document.getElementById("signIn/name");
+
+async function getProfile() {
+  try {
+    const res = await fetch("http://localhost:4000/users/getProfile", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!res.ok) {
+      signInLink.textContent = "Sign In";
+      signInLink.href = "login.html";
+      return;
+    }
+
+    const data = await res.json();
+    console.log(data);
+
+    signInLink.textContent = data.profile.username;
+    signInLink.href = "profile.html";
+  } catch (error) {
+    console.error(error);
+    signInLink.textContent = "Sign In";
+    signInLink.href = "login.html";
+  }
+}
+
+getProfile();
+
 function displayCart() {
   const cart = getCart();
 
