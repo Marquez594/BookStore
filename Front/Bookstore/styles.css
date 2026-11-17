@@ -278,3 +278,22 @@ body {
     text-decoration: underline;
     text-underline-offset: 4px;
 }
+
+.errorArea{
+    position: fixed;
+    display: none;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 1rem;
+
+    flex-direction: column;
+    background-color: rgb(196, 195, 195);
+    border-radius: 0px 10px 0px 0px;
+}
+.errorArea h1{
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+
+}
